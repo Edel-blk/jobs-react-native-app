@@ -13,7 +13,13 @@ const Popularjobs = () => {
   const { data, isLoading, error } = useFetch('search', {
     query: 'React developer',
     num_pages: 1
-  })
+  });
+
+  const [selectedJob, setSelectedJob] = useState();
+
+  const handleCardPress = (item) => {
+
+  }
 
   //console.log(data);
 
@@ -38,6 +44,7 @@ const Popularjobs = () => {
             data={data}
             renderItem={({ item }) => (
               <PopularJobsCard
+                handleCardPress={handleCardPress}
                 item={item}
               />
             )}
