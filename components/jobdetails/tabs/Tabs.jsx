@@ -27,7 +27,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }) => {
         )}
         horizontal
         showsHorizontalScrollIndicator={false}
-        keyExtractor={item => item}
+        keyExtractor={(item) => item}
         contentContainerStyle={{ columnGap: SIZES.small / 2}}
       />
     </View>

@@ -7,6 +7,7 @@ import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome} from '../components'
 
 const Home = () => {
   const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState("")
 
   return (
    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -18,14 +19,22 @@ const Home = () => {
           <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />
         ),
         headerRight: () => (
-          <ScreenHeaderBtn iconUrl={images.profile} dimension="100%" />
+          <ScreenHeaderBtn iconUrl={{ uri: "https://media.licdn.com/dms/image/D5603AQHLHcEvJoNViA/profile-displayphoto-shrink_200_200/0/1675204190411?e=1702512000&v=beta&t=h1OsNeNXnwFqnKUPDyBAfx4feCvgy687DfTJ7-NPFEY"}} dimension="100%" />
         ),
         headerTitle: ""
       }}
     />
     <ScrollView showsVerticalScrollIndicator={false} >
       <View style={{ flex: 1, padding: SIZES.medium }} >
-        <Welcome />
+        <Welcome
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          handleClick={() => {
+            if(searchTerm) {
+              router.push(`/search/${searchTerm}`)
+            }
+          }}
+        />
 
         <Popularjobs />
 
